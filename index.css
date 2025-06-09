@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+font-family: 'Inria Serif', serif;
+}
+body{
+    background-color: black;
+}
+.page1{
+    display: flex;
+}
+.block1
+{
+    width: 40vw;
+    height: 100vh;
+
+}
+ 
+.block2
+{
+    width: 53.5vw;
+    height: 140vh;
+    margin-left: 2rem;
+}
+
+.block1 img{
+    width: 39.797916vw;
+    height: 48.034375rem;
+    rotate: 0.34deg;
+    margin: 14.2125rem 0 0 2.5694vw ;
+}
+
+.block2 .box
+{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    margin: 3.5rem 0 0 ;
+    background-color: #D9D9D91A;
+    width: 48.6975rem;
+    height: 54.375rem;
+    box-shadow: inset -70.1px 70.1px 70.1px 0 #FFFFFF1A,
+                inset 70.1px -70.1px 70.1px 0 #A5A5A51A;
+
+}
+
+.box table {
+    justify-self: center;
+    /* margin-left: -7rem;? */
+
+}
+
+.box table tr td {
+    padding: 2rem;
+}
+
+table .heading p{
+    font-weight: 400;
+    font-size: 2rem;
+    color: #FFFFFF;
+    margin-top: 2rem;
+
+}
+table button{
+    color: #FFFFFF;
+    width: 9.444vw;
+    height: 3.9375rem;
+    opacity: 99%;
+    border: 0.0625rem;
+    border-radius: 1.5rem;
+    background-image: linear-gradient(to right ,#76A1FF, #15357C);
+    font-size: 1.5rem;
+    margin-top: 4rem;
+    margin-left: 10rem;
+}
+
+input::placeholder{
+    font-size: 1.15rem;
+    color: #FFFFFF;
+    margin-left: 1rem;
+}
+
+table input{
+    background-color: transparent;
+    border: 0;
+    padding-left: 1.6rem;
+    margin-top: 2rem;
+}
+
+.underline-row td {
+  border-bottom: 2px solid #7D7D7D;
+  width: 33.222vw;
+  
+}
+.underline-row tr{
+    padding-left: 5rem;
+}
+
+.icon1,.icon2,.icon3
+{
+    width: 5.6944vw;
+    height: 3.4625rem;
+    background-color: #FFFFFF;
+    border-radius: 6.25rem;
+    justify-self: center;
+    margin: 0 1.28125rem 0 1.28125rem;
+}
+
+.box-icon{
+    display: flex;
+    margin-left: 3rem;
+}
+
+.icon1 p,.icon2 img , .icon3 img
+{
+width: 2.6388vw;
+height: 2.375rem;
+margin-top: 0.5rem;
+margin-left: 1.319vw;
+}
+
+.icon1 p{
+    opacity: 0.66;
+    font-weight: 400;
+    font-size: 2.25rem;
+    color: #FFFFFF;
+}
+.icon1 {
+    background-image: linear-gradient(to bottom right, #000000, #016295);
+}
+.icon2 {
+    background-image: linear-gradient(to bottom right, #000000, #1A80E4);
+}
+.icon3 {
+    background-image: linear-gradient(to bottom right, #000000, #696969);
+}
+
