@@ -1,0 +1,250 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    position: absolute; 
+}
+
+.homepage .block1 img{
+    height: 63.375rem;
+    width: 91.684722vw;
+    margin: 0 3.157638vw 0 3.157638vw ;
+    opacity: 37%;
+}
+.homepage .block1{
+    background-color: black;
+    color: #FFFFFF;
+}
+
+.block1 .navbar{
+    display: flex;
+    margin-top: 3.5625rem;
+    margin-left: 12vw;
+    position: relative;
+    top: -1020px;
+}
+.block1 .navbar ul{
+    display: flex;
+    margin-left: 12vw;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.273125rem;
+    opacity: 65%;
+    
+}
+
+.block1 .navbar ul li{
+    list-style: none;
+    margin-left: 5.5277vw;
+    box-sizing: border-box;
+    transition: padding 0.3s ease;
+    display: inline-block;
+    
+}
+
+.block1 .navbar h1{
+    font-size: 2.125rem;
+    font-weight: 700;
+    font-family: Inria Serif;
+}
+
+.block1 .navbar ul li:hover{
+    border: 1px solid white;
+    padding: 0.8rem;
+}
+
+.middle_part
+{
+    display: flex;
+    position: relative;
+    top: -800px;
+    margin-left:12vw;
+}
+
+.middle_part h3{
+    font-weight: 700;
+    font-size: 3.325rem;
+    font-family: Inria Serif;
+}
+
+.middle_part p{
+    margin-top: 1rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    font-family: Outfit;
+}
+
+.middle_part .box2 img{
+    position: relative;
+    top: -230px;
+    opacity: 100;
+    width: 36.688vw;
+    height: 42.00125rem;
+    rotate: -24.59deg;
+}
+
+.block1 .button{
+    position: relative;
+    top: -1050px;
+    left: 9.04166vw;
+    box-sizing: border-box;
+    transition: padding 0.3s ease;
+    display: inline-block;
+    border: 1px solid white;
+    padding: 0.2rem;
+}
+.block1 .button:hover{
+    border: 1px solid white;
+    padding: 0.8rem ;
+}
+.block1 .button button {
+    background-color: transparent;
+    border: 0px;
+    color: #FFFFFF;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.block1 .button .qr img{
+    height: 4.336875rem;
+    width: 4.81875vw;
+}
+
+.block1 .button .download p{
+    font-family: Outfit;
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+.block1 .button .download {
+    margin-left: -2.2rem;
+}
+
+.block2 {
+    position: relative;
+    top: -750px;
+    background-color: black;
+    color: #FFFFFF;
+    font-weight: 700;
+    justify-items: center;
+
+}
+.block2 .heading{
+    font-size: 2.5rem;
+    font-family: Inria Serif;
+}
+
+.block2 .story{
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    font-family: Inria Serif;
+    word-spacing: -10px;
+}
+
+.block3 img{
+    width: 45.02777vw;
+    height: 35.5rem;
+    margin-left: 20.833vw;
+}
+.block3{
+    position: relative;
+    z-index: 1;
+    top: -600px;
+    background-color: #FFFFFF;
+}
+.block3 .box{
+    display: flex;
+    padding-top: 5rem;
+}
+
+.block3 .box .text{
+    position: relative;
+    z-index: 1;
+    left: -15rem;
+    padding-top:5rem ;
+}
+
+.block3 .text .heading{
+    color: #29AC71;
+    font-weight: 700;
+    font-size: 3.625rem;
+    font-family: Inria Serif;
+    width: auto;
+
+}
+
+.block3 .text p{
+    font-family: Ovo;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 3%;
+}
+
+.block4{
+    position: relative;
+    top: -40rem;
+    z-index: -1;
+}
+
+.block4 .box{
+    display: flex;
+    background-color: #000000;
+    padding-top: 6rem;
+    padding-left: 15rem;
+}
+.block4 img{
+    padding-left: 5rem;
+    height: 31rem;
+}
+.block4 .text{
+    padding-top: 8rem;
+}
+.block4 .text .heading{
+    color: #29AC71;
+    font-family: Inria Serif;
+    font-weight: 700;
+    font-size: 3.625rem;
+}
+
+.block4 .text p{
+    font-family: Ovo;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 3%;
+    color: #FFFFFF;
+}
+.block5{
+    position: relative;
+    top: -35rem;
+}
+.block5 img{
+    margin-right: -18rem;
+    margin-left: 18rem;
+    height:38.1875rem;
+    width: 48.91666vw;
+}
+.block5 .box{
+display: flex;
+overflow: hidden;
+height: 35rem;
+}
+
+.block5 .text .heading{
+    font-family: Inria Serif;
+    font-weight: 700;
+    font-size: 3.625rem;
+    color: #29AC71;
+    padding-top: 5rem;
+}
+
+.block5 .text p{
+    font-family: Ovo;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 3%;
+    line-height: 2.5rem;
+    margin-top: 1rem;
+}
