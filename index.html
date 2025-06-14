@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyMate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        .success-message {
+            color: green;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="page1">
@@ -16,32 +30,110 @@
         </div>
         <div class="block2">
             <div class="box">
-                <table>
-                    <tr>
-                        <td> <div class="heading"><p>Get exclusive access of<br> moneymate</p></div></td>
-                    </tr>
-                    <tr class="underline-row">
-                        <td><input type="text"  placeholder="Email"></td>
-                    </tr  >
-                    <tr class="underline-row">
-                        <td><input type="password" placeholder="Password"></td>
-                    </tr>
-                    <tr>
-                        <td><button>Login</button></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="box-icon">
-                                <div class="icon1"><p>in</p></div>
-                                <div class="icon2"><img src="Assets/d9a5c03e499e5adba75fa78dd5323fa1cb1cfaa2.png"></div>
-                                <div class="icon3"><img src="Assets/a3c7d5517ff5ed1c9a5172c52fcad5ad6380eca3.png"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                </table>
+                <form id="loginForm">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="heading">
+                                    <p>Get exclusive access of<br> moneymate</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="underline-row">
+                            <td><input type="email" id="email" placeholder="Email" required></td>
+                        </tr>
+                        <tr class="underline-row">
+                            <td><input type="password" id="password" placeholder="Password" required></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="errorMessage" class="error-message"></div>
+                                <div id="successMessage" class="success-message"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit">Login</button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="box-icon">
+                                    <div class="icon1"><p>in</p></div>
+                                    <div class="icon2"><img src="Assets/d9a5c03e499e5adba75fa78dd5323fa1cb1cfaa2.png"></div>
+                                    <div class="icon3"><img src="Assets/a3c7d5517ff5ed1c9a5172c52fcad5ad6380eca3.png"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // Clear previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            try {
+                console.log('Attempting login with:', { email });
+                const response = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                console.log('Response status:', response.status);
+                const data = await response.json();
+                console.log('Response data:', data);
+
+                if (response.ok) {
+                    // Store the token and user data
+                    console.log('Storing token and user data...');
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Verify storage
+                    const storedToken = localStorage.getItem('token');
+                    const storedUser = localStorage.getItem('user');
+                    console.log('Stored token:', storedToken);
+                    console.log('Stored user:', storedUser);
+                    
+                    if (!storedToken || !storedUser) {
+                        throw new Error('Failed to store authentication data');
+                    }
+                    
+                    // Show success message
+                    successMessage.textContent = 'Login successful! Redirecting...';
+                    successMessage.style.display = 'block';
+                    
+                    // Redirect to dashboard after a short delay
+                    console.log('Preparing to redirect to homepage...');
+                    setTimeout(() => {
+                        console.log('Redirecting to homepage...');
+                        window.location.href = 'http://localhost:8000/homepage.html';
+                    }, 1500);
+                } else {
+                    // Show error message
+                    errorMessage.textContent = data.message || 'Login failed';
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                errorMessage.textContent = 'An error occurred during login. Please try again.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>

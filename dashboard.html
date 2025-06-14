@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyMate Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Figtree', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .dashboard-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .logout-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: #cc0000;
+        }
+        .debug-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .debug-info pre {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>MoneyMate Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <div class="user-info">
+            <h2>Welcome, <span id="userName">Loading...</span>!</h2>
+            <p>Email: <span id="userEmail">Loading...</span></p>
+            <p>User ID: <span id="userId">Loading...</span></p>
+        </div>
+        <div class="debug-info">
+            <h3>Debug Information</h3>
+            <p>Token Status: <span id="tokenStatus">Checking...</span></p>
+            <p>User Data Status: <span id="userDataStatus">Checking...</span></p>
+            <pre id="userData">Loading user data...</pre>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        function checkAuth() {
+            console.log('Checking authentication...');
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            
+            console.log('Token exists:', !!token);
+            console.log('User data exists:', !!user);
+            
+            // Update debug information
+            document.getElementById('tokenStatus').textContent = token ? 'Present' : 'Missing';
+            document.getElementById('userDataStatus').textContent = user ? 'Present' : 'Missing';
+            
+            if (!token || !user) {
+                console.log('No authentication data found, redirecting to login...');
+                window.location.href = 'http://localhost:8000/';
+                return;
+            }
+
+            try {
+                const userData = JSON.parse(user);
+                console.log('User data:', userData);
+                
+                // Display user information
+                document.getElementById('userName').textContent = userData.name || 'User';
+                document.getElementById('userEmail').textContent = userData.email;
+                document.getElementById('userId').textContent = userData.id;
+                
+                // Display debug information
+                document.getElementById('userData').textContent = JSON.stringify(userData, null, 2);
+            } catch (error) {
+                console.error('Error parsing user data:', error);
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                window.location.href = 'http://localhost:8000/';
+            }
+        }
+
+        // Logout function
+        function logout() {
+            console.log('Logging out...');
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'http://localhost:8000/';
+        }
+
+        // Check authentication when page loads
+        checkAuth();
+    </script>
+</body>
+</html> 

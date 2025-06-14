@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyMate - Peer-to-Peer Lending</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="homepage">
+        <div class="block1">
+            <img src="/Assets/homepage/page1notes.jpg" alt="background_img">
+            <div class="navbar">
+                <h1>MoneyMate</h1>
+                <ul>
+                    <li><a href="homepage.html" style="color: white; text-decoration: none;">HOME</a></li>
+                    <li><a href="dashboard.html" style="color: white; text-decoration: none;">DASHBOARD</a></li>
+                    <li><a href="#" id="profileLink" style="color: white; text-decoration: none;">PROFILE</a></li>
+                    <li><a href="#" style="color: white; text-decoration: none;">ABOUT US</a></li>
+                    <li><a href="#" id="loginLink" style="color: white; text-decoration: none;">LOGIN</a></li>
+                </ul>
+            </div>
+            <div class="middle_part">
+                <div class="box1">
+                    <h3>Lend with Trust.<br>
+                         Borrow with<br> Confidence 
+                    </h3>
+                    <p>
+                        MoneyMate is where money meets trust — a 
+                        <br>peer-powered way to lend, borrow, and grow<br> together.
+                    </p>
+                </div>
+                <div class="box2">
+                    <img src="/Assets/homepage/page1coin.png" alt="coin_image">
+                </div>
+            </div>
+            <div class="button">
+                <button type="button" onclick="window.location.href='index.html'">
+                    <div class="qr"><img src="/Assets/homepage/page1qr.png" alt="QR"></div>
+                    <div class="download"><p>Get Started<br>Now</p></div>
+                </button>
+            </div>
+        </div>
+        <div class="block2">
+            <div class="heading"><p>Our Story</p></div>
+            <div class="story"><pre>
+MoneyMate connects real people for fast,
+secure, peer-to-peer lending. We simplify
+borrowing and empower lending—no
+banks, no delays. Just transparent,
+human finance built for everyday
+dreams.</pre></div>
+        </div>
+        <div class="block3">
+            <div class="box">
+                <img src="/Assets/homepage/Page3.png" alt="Phone-img">
+                <div class="text">
+                    <div class="heading">Fill out the<br> application form</div>
+                    <p>MoneyMate is where money meets trust — a<br> peer-powered way to lend, borrow, and grow<br> together.</p>
+                </div>
+            </div>
+        </div>
+        <div class="block4">
+            <div class="box">
+                <div class="text">
+                    <div class="heading">Submit required <br>documents</div>
+                    <p>Upload your documents in a few clicks.<br> Your data stays safe and confidential.</p>
+                </div>
+                <img src="/Assets/homepage/Page3.png" alt="Phone-img">
+            </div>
+        </div>
+        <div class="block5">
+            <div class="box">
+                <img src="/Assets/homepage/Lastpage.png" alt="Profile_image">
+                <div class="text">
+                    <div class="heading">Get approval <br>within 24 hours</div>
+                    <p>Apply today, get approved tomorrow.<br> Speedy service you can trust.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            const user = localStorage.getItem('user');
+            const loginLink = document.getElementById('loginLink');
+            const profileLink = document.getElementById('profileLink');
+
+            if (token && user) {
+                // User is logged in
+                loginLink.textContent = 'LOGOUT';
+                loginLink.href = '#';
+                loginLink.onclick = function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.href = 'index.html';
+                };
+                profileLink.href = 'dashboard.html';
+            } else {
+                // User is not logged in
+                loginLink.textContent = 'LOGIN';
+                loginLink.href = 'index.html';
+                profileLink.href = 'index.html';
+            }
+        }
+
+        // Check authentication when page loads
+        checkAuth();
+    </script>
+</body>
+</html>
