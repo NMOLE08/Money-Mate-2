@@ -24,47 +24,54 @@
     </style>
 </head>
 <body>
+    <script>
+    function handleInputColor(inputElement) {
+  inputElement.addEventListener('input', () => {
+    if (inputElement.value.trim() !== '') {
+      inputElement.classList.add('typed');
+    } else {
+      inputElement.classList.remove('typed');
+    }
+  });
+}
+
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+
+handleInputColor(emailInput);
+handleInputColor(passwordInput);
+  </script>
     <div class="page1">
         <div class="block1">
             <img src="Assets/ad7c6edb847d8ba8939e6bca09713ce4fdda0948.png">
         </div>
         <div class="block2">
             <div class="box">
-                <form id="loginForm">
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="heading">
-                                    <p>Get exclusive access of<br> moneymate</p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="underline-row">
-                            <td><input type="email" id="email" placeholder="Email" required></td>
-                        </tr>
-                        <tr class="underline-row">
-                            <td><input type="password" id="password" placeholder="Password" required></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div id="errorMessage" class="error-message"></div>
-                                <div id="successMessage" class="success-message"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Login</button></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="box-icon">
-                                    <div class="icon1"><p>in</p></div>
-                                    <div class="icon2"><img src="Assets/d9a5c03e499e5adba75fa78dd5323fa1cb1cfaa2.png"></div>
-                                    <div class="icon3"><img src="Assets/a3c7d5517ff5ed1c9a5172c52fcad5ad6380eca3.png"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+                <table>
+                    <tr>
+                        <td> <div class="heading"><p>Get exclusive access of<br> moneymate</p></div></td>
+                    </tr>
+                    <tr class="underline-row">
+                        <td><input type="text" id="myTextarea" placeholder="Email"></td>
+                    </tr  >
+                    <tr class="underline-row">
+                        <td><input type="password" id="myTextarea" placeholder="Password"></td>
+                    </tr>
+                    <tr>
+                        <td><button>Login</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="box-icon">
+                                <div class="icon1"><p>in</p></div>
+                                <div class="icon2"><img src="Assets/d9a5c03e499e5adba75fa78dd5323fa1cb1cfaa2.png"></div>
+                                <div class="icon3"><img src="Assets/a3c7d5517ff5ed1c9a5172c52fcad5ad6380eca3.png"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+>>>>>>> f93c45c (Updated homepage design and styles (index.html and login.css))
             </div>
         </div>
     </div>
